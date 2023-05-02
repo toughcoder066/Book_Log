@@ -1,0 +1,42 @@
+{% extends 'book_logs/base.html' %}
+
+{% block header %}
+<div class="bg-light text-dark mb-5 mt-5 card p-5 text-center">
+    <h1 class="display-4">Welcome to Book Log</h1>
+</div>
+{% endblock header %}
+{% block content %}
+<!-- <hr class="my-2"> -->
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2 class="lead text-center">
+                Welcome <strong>{{ user.username }}</strong>
+            </h2>
+            <h2 class="lead text-center mt-5">
+                <a class="btn btn-primary p-3" href="{% url 'book_logs:topics' %}">Access your logs</a>
+                
+            </h2>
+            
+        </div>
+    {% endif %}
+    {% if not user.is_authenticated %}
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <h2 class="lead text-center">
+                An application that allows you to save the topics of books you've read. 
+                you can make entries about anything you learn easily
+            </h2><br>
+            <h2 class="lead text-center">
+                register an account today to enjoy all that book log has to offer
+            </h2>
+        </div>
+    
+        <div class="col-md-12 text-center mt-4">
+            <a class="btn btn-primary" href="{% url 'users:register' %}">Register</a>
+        </div>
+    {% endif %}
+    </div>
+
+
+{% endblock content %}

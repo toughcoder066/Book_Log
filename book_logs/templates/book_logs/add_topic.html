@@ -1,0 +1,17 @@
+{% extends 'book_logs/base.html' %}
+{% load bootstrap5 %}
+
+{% block content %}
+
+<p>Add Topic</p>
+
+<form action="{% url 'book_logs:add_topic' %}" method="POST" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+
+    {% buttons %}
+        <button value="submit" class="btn btn-primary">add topic</button>
+    {% endbuttons %}
+</form>
+
+{% endblock content %}

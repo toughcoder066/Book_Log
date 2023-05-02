@@ -1,0 +1,19 @@
+{% extends 'book_logs/base.html' %}
+{% load bootstrap5 %}
+
+
+{% block header %}
+<h3>{{topic}}</h3>
+{% endblock header %}
+
+{% block content %}
+
+<p class="">Add entry</p>
+
+<form action="{% url 'book_logs:add_entry' topic.id %}" method="POST" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <button class="btn btn-primary" value="submit">Add Entry</button>
+</form>
+
+{% endblock content %}

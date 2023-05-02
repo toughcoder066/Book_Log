@@ -1,0 +1,29 @@
+{% extends 'book_logs/base.html' %}
+{% load bootstrap5 %}
+
+
+{% block header%}
+<h2 class="d-flex align-items-left justify-content-center">Register</h2>
+{% endblock %}
+{% block content %}
+
+
+<div class="row d-flex align-items-center justify-content-center">
+    <div class="col-md-6">
+        <table>
+            <form action="{% url 'users:register' %}" method="POST" class="form mt-5">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+        
+                {% buttons %}
+                    <button value="submit" class="btn btn-primary">Register</button>
+                {% endbuttons %}
+                <input type="hidden" name="next" value="{% url 'book_logs:index' %}" />
+            </form>
+        </table>
+        
+    </div>
+</div>
+
+
+{% endblock content %}

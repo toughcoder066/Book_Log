@@ -1,0 +1,31 @@
+{% extends 'book_logs/base.html' %}
+{% load bootstrap5 %}
+
+{% block header %}
+<div class="d-flex align-items-center justify-content-center">
+    <h2>Log into your account</h2>
+</div>
+
+{% endblock header %}
+
+{% block content %}
+
+    {% if form.errors %}
+        <p>Username or password incorrect</p>
+    {% endif %}
+
+    <div class="row d-flex align-items-center justify-content-center">
+        <div class="col-md-6">
+            <form action="{% url 'users:login' %}" method="POST" class="form mt-5">
+                {% csrf_token %}
+                {% bootstrap_form form %}
+        
+                {% buttons %}
+                    <button value="submit" class="btn btn-primary">Login</button>
+                {% endbuttons %}
+                <input type="hidden" name="next" value="{% url 'book_logs:index' %}" />
+            </form>
+        </div>
+    </div>
+
+{% endblock content %}
